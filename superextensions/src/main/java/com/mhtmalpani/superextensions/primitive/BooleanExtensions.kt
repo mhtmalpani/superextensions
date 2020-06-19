@@ -7,3 +7,7 @@ fun Boolean?.orFalse(): Boolean {
 fun Boolean?.orTrue(): Boolean {
     return this ?: true
 }
+
+fun Boolean.flip(): Boolean {
+    return !this
+}

@@ -7,3 +7,9 @@ fun SharedPreferences.execute(body: SharedPreferences.Editor.() -> Unit) {
     body(editor)
     editor.apply()
 }
+
+fun SharedPreferences.executeSynchronous(body: SharedPreferences.Editor.() -> Unit): Boolean {
+    val editor = edit()
+    body(editor)
+    return editor.commit()
+}

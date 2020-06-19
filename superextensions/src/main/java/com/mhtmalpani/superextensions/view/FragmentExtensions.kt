@@ -3,8 +3,8 @@ package com.mhtmalpani.superextensions.view
 import androidx.fragment.app.Fragment
 
 inline fun <reified T : Fragment> instanceOf(vararg params: Pair<String, Any?>): T =
-    T::class.java.newInstance().apply { arguments =
-        bundleOf(*params)
+    T::class.java.newInstance().apply {
+        arguments = bundleOf(*params)
     }
 
 inline fun <reified T : Any> Fragment.bindArgument(key: String): Lazy<T> = lazy {

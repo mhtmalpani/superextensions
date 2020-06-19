@@ -4,10 +4,19 @@ import java.net.URI
 import java.net.URLEncoder
 import java.security.MessageDigest
 
+/**
+ * Extensions for Urls.
+ * Fetch the Host
+ */
 fun String.extractDomain(): String = URI(this).host
+
 
 fun String.encodeToUTF8(): String = URLEncoder.encode(this, "UTF-8")
 
+
+/**
+ * Generates a Hash 2566 of a String
+ */
 fun String.hash256(): String {
     val messageDigest = MessageDigest.getInstance("SHA-256")
     val digest = messageDigest.digest(this.toByteArray())
