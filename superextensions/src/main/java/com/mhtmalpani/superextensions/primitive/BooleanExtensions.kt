@@ -1,4 +1,4 @@
-package com.mhtmalpani.superextensions
+package com.mhtmalpani.superextensions.primitive
 
 fun Boolean?.orFalse(): Boolean {
     return this ?: false

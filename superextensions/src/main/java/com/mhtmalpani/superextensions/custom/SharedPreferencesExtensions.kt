@@ -1,4 +1,4 @@
-package com.mhtmalpani.superextensions
+package com.mhtmalpani.superextensions.custom
 
 import android.content.SharedPreferences
 

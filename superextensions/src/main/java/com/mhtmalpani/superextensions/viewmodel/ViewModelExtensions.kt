@@ -1,4 +1,4 @@
-package com.mhtmalpani.superextensions
+package com.mhtmalpani.superextensions.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -1,4 +1,4 @@
-package com.mhtmalpani.superextensions
+package com.mhtmalpani.superextensions.lifecycle
 
 import androidx.lifecycle.Lifecycle
 

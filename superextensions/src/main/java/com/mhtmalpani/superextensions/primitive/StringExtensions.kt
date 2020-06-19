@@ -1,4 +1,4 @@
-package com.mhtmalpani.superextensions
+package com.mhtmalpani.superextensions.primitive
 
 import java.net.URI
 import java.net.URLEncoder

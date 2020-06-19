@@ -1,4 +1,4 @@
-package com.mhtmalpani.superextensions
+package com.mhtmalpani.superextensions.view
 
 import android.os.Bundle
 import android.os.Parcelable

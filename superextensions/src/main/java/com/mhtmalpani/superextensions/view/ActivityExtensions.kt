@@ -1,4 +1,4 @@
-package com.mhtmalpani.superextensions
+package com.mhtmalpani.superextensions.view
 
 import android.app.Activity
 import android.content.Context
