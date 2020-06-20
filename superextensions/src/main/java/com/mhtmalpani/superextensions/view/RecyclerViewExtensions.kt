@@ -1,8 +1,47 @@
 package com.mhtmalpani.superextensions.view
 
-import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 
-//fun RecyclerView.isChildDisplayedOnScreen(child: View?): Boolean {
-//    child ?: return false
-//    return this.globalVisibleRect.contains(child.globalVisibleRect)
-//}
+fun RecyclerView.setScrollListener(onScrolled: () -> Unit) {
+
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            onScrolled.invoke()
+        }
+    })
+}
+
+fun RecyclerView.setScrollListeners(onScrolled: (Int, Int) -> Unit) {
+
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            onScrolled.invoke(dx, dy)
+        }
+    })
+}
+
+fun RecyclerView.setOnScrollStateChangeListeners(onScrollStateChanged: () -> Unit) {
+
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            onScrollStateChanged.invoke()
+        }
+    })
+}
+
+fun RecyclerView.setOnScrollStateChangeListeners(onScrollStateChanged: (Int) -> Unit) {
+
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            onScrollStateChanged.invoke(newState)
+        }
+    })
+}
