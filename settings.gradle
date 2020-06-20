@@ -1,2 +1,3 @@
+include ':superextensions'
 include ':app'
 rootProject.name = "SuperExtensions"
