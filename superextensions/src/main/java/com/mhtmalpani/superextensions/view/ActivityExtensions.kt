@@ -3,6 +3,7 @@ package com.mhtmalpani.superextensions.view
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Parcelable
 
 inline fun <reified T : Activity> Context.intentOf(
     vararg params: Pair<String, Any?>
@@ -70,5 +71,10 @@ fun Activity.bindBooleanArgument(key: String): Lazy<Boolean> = lazy {
 
 fun Activity.bindCharArgument(key: String): Lazy<Char> = lazy {
     this.intent?.extras?.getChar(key)
+        ?: throw IllegalArgumentException("Argument not passed for key: $key")
+}
+
+fun <T : Parcelable> Activity.bindParcelableArgument(key: String): Lazy<T> = lazy {
+    this.intent?.extras?.getParcelable<T>(key)
         ?: throw IllegalArgumentException("Argument not passed for key: $key")
 }

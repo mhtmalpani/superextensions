@@ -13,7 +13,7 @@ fun RecyclerView.setScrollListener(onScrolled: () -> Unit) {
     })
 }
 
-fun RecyclerView.setScrollListeners(onScrolled: (Int, Int) -> Unit) {
+fun RecyclerView.setScrollListeners(onScrolled: (dx: Int, dy: Int) -> Unit) {
 
     addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
@@ -35,7 +35,7 @@ fun RecyclerView.setOnScrollStateChangeListeners(onScrollStateChanged: () -> Uni
     })
 }
 
-fun RecyclerView.setOnScrollStateChangeListeners(onScrollStateChanged: (Int) -> Unit) {
+fun RecyclerView.setOnScrollStateChangeListeners(onScrollStateChanged: (newState: Int) -> Unit) {
 
     addOnScrollListener(object : RecyclerView.OnScrollListener() {
 

@@ -1,6 +1,7 @@
 package com.mhtmalpani.superextensions.view
 
 import android.os.Parcelable
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
