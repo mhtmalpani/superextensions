@@ -16,3 +16,10 @@ fun <T1 : Any, T2 : Any, T3 : Any, R : Any> ifNotNull(
 ): R? {
     return if (p1 != null && p2 != null && p3 != null) block(p1, p2, p3) else null
 }
+
+inline fun <T : Any, R : Any> T?.ifNullElseNonNull(
+    whenNull: () -> R,
+    whenNotNull: (T) -> R
+): R {
+    return this?.let { whenNotNull.invoke(it) } ?: whenNull.invoke()
+}

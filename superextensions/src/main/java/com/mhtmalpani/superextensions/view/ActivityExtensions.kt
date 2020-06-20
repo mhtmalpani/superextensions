@@ -8,6 +8,31 @@ inline fun <reified T : Activity> Context.intentOf(
     vararg params: Pair<String, Any?>
 ): Intent = Intent(this, T::class.java).apply { intentOf(*params) }
 
+inline fun <reified T : Any> Activity.intentExtra(key: String): Lazy<T> =
+    lazy { intent?.extras?.get(key) as T }
+
+/**
+ * `extra` would get the extra at runtime when accessing the data.
+ * Usage:
+ * private val id by extra<String>(EXTRA_ID_KEY)
+ *      -> will return String?
+ */
+inline fun <reified T : Any> Activity.extra(key: String, default: T? = null) = lazy {
+    val value = intent?.extras?.get(key)
+    if (value is T) value else default
+}
+
+/**
+ * `extraNotNull` behaves like `extra`, but would crash at runtime if the value was null
+ * Usage:
+ * private val id by extraNotNull<String>(EXTRA_ID_KEY)
+ *      -> will return String
+ */
+inline fun <reified T : Any> Activity.extraNotNull(key: String, default: T? = null) = lazy {
+    val value = intent?.extras?.get(key)
+    requireNotNull(if (value is T) value else default) { key }
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //                                      Bind Arguments
