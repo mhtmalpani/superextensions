@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 
+
 fun Fragment.toast(any: Any, time: Int = Toast.LENGTH_SHORT) = activity?.toast(any.toString(), time)
 
 fun Fragment.toast(@StringRes stringRes: Int, time: Int = Toast.LENGTH_SHORT) =
