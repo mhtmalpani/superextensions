@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Parcelable
+import java.io.Serializable
 
 inline fun <reified T : Activity> Context.intentOf(
     vararg params: Pair<String, Any?>
@@ -76,5 +77,10 @@ fun Activity.bindCharArgument(key: String): Lazy<Char> = lazy {
 
 fun <T : Parcelable> Activity.bindParcelableArgument(key: String): Lazy<T> = lazy {
     this.intent?.extras?.getParcelable<T>(key)
+        ?: throw IllegalArgumentException("Argument not passed for key: $key")
+}
+
+fun <T : Serializable> Activity.bindSerializableArgument(key: String): Lazy<T> = lazy {
+    this.intent?.extras?.getSerializable(key) as? T
         ?: throw IllegalArgumentException("Argument not passed for key: $key")
 }
