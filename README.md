@@ -2,7 +2,7 @@
 
 ![Android CI](https://github.com/mhtmalpani/superextensions/workflows/Android%20CI/badge.svg)
 
-Download:
+## Download:
 
 Step 1. Add the JitPack repository to your build file
 
@@ -21,6 +21,6 @@ Step 2. Add the dependency
 
 ```gradle
 dependencies {
-        implementation 'com.github.mhtmalpani:superextensions:0.2.0'
+    implementation 'com.github.mhtmalpani:superextensions:0.2.0'
 }
 ```
