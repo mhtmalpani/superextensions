@@ -17,6 +17,13 @@ import androidx.fragment.app.Fragment
 /**
  * Binds a view with @param id to variable
  * This can be used within Activity Scope
+ *
+ * Usage:
+ *      private val profileImage by bindView<ImageView>(R.id.profile_image)
+ *      or
+ *      private val profileImage: ImageView by bindView(R.id.profile_image)
+ *      or
+ *      private val profileImage: ImageView by bindView(profile_image)
  */
 inline fun <reified T : View> Activity.bindView(@IdRes id: Int): Lazy<T> =
     lazy { findViewById<T>(id) }
@@ -25,6 +32,13 @@ inline fun <reified T : View> Activity.bindView(@IdRes id: Int): Lazy<T> =
 /**
  * Binds a view with @param id to variable
  * This can be used within Fragment Scope
+ *
+ * Usage:
+ *      private val profileImage by bindView<ImageView>(R.id.profile_image)
+ *      or
+ *      private val profileImage: ImageView by bindView(R.id.profile_image)
+ *      or
+ *      private val profileImage: ImageView by bindView(profile_image)
  */
 inline fun <reified T : View> Fragment.bindView(@IdRes id: Int): Lazy<T> = lazy {
     view?.findViewById<T>(id) ?: throw Exception("Fragment is not initialized")
