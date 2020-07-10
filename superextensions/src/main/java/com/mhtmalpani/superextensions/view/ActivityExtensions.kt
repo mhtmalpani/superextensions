@@ -3,6 +3,7 @@ package com.mhtmalpani.superextensions.view
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
@@ -24,6 +25,24 @@ import java.io.Serializable
 inline fun <reified T : Activity> Context.intentOf(
     vararg params: Pair<String, Any?>
 ): Intent = Intent(this, T::class.java).apply { intentOf(*params) }
+
+
+/**
+ * Create an intent of the Activity in demand from the invoked Context
+ *
+ * Usage:
+ *      context.intentOf<LoginActivity>()
+ *
+ * We can pass custom bundle within the intent.
+ *
+ * Usage:
+ *      context.intentOf<LoginActivity>(
+ *          Bundle()
+ *      )
+ */
+inline fun <reified T : Activity> Context.intentOf(
+    bundle: Bundle? = null
+): Intent = Intent(this, T::class.java).apply { bundle?.let { putExtras(it) } }
 
 
 /**
