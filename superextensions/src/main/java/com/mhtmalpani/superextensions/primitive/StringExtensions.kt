@@ -17,7 +17,7 @@ fun String.encodeToUTF8(): String = URLEncoder.encode(this, "UTF-8")
 
 
 /**
- * Generates a Hash 2566 of a String
+ * Generates a Hash 256 of a String
  */
 fun String.hash256(): String {
     val messageDigest = MessageDigest.getInstance("SHA-256")
@@ -25,6 +25,9 @@ fun String.hash256(): String {
     return digest.fold("", { str, it -> str + "%02x".format(it) })
 }
 
+/**
+ * Convert a given string to TitleCase
+ */
 @SuppressLint("DefaultLocale")
 fun String.convertToTitleCase(excludeSet: List<String> = emptyList()): String? {
     val result: String?
