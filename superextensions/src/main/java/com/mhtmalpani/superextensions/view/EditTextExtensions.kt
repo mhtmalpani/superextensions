@@ -12,7 +12,7 @@ import android.widget.EditText
  *          //You custom logic to do after text changed
  *      }
  */
-fun EditText.afterTextChanged(afterTextChanged: (data: String) -> Unit) {
+fun EditText.afterTextChanged(afterTextChanged: (data: String) -> Unit = {}) {
 
     addTextChangedListener(object : TextWatcher {
         override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
