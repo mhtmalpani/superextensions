@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Parcelable
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import java.io.Serializable
 
 inline fun <reified T : Activity> Context.intentOf(
@@ -83,4 +85,19 @@ fun <T : Parcelable> Activity.bindParcelableArgument(key: String): Lazy<T> = laz
 fun <T : Serializable> Activity.bindSerializableArgument(key: String): Lazy<T> = lazy {
     this.intent?.extras?.getSerializable(key) as? T
         ?: throw IllegalArgumentException("Argument not passed for key: $key")
+}
+
+
+/**
+ * Creates a fragment transaction smoothly
+ *
+ * Usage:
+ *      fragmentTransaction {
+ *          replace(R.id.fragment_container, YourFragment(), YourFragment.TAG)
+ *      }
+ */
+fun AppCompatActivity.fragmentTransaction(body: FragmentTransaction.() -> Unit) {
+    supportFragmentManager.beginTransaction().also {
+        body(it)
+    }.commit()
 }

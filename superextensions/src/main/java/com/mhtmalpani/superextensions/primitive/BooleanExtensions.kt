@@ -2,6 +2,7 @@ package com.mhtmalpani.superextensions.primitive
 
 /**
  * @return false when the boolean is null, else the value of the boolean is returned
+ *
  * Usage:
  *      val isLoggedIn: Boolean? = null
  *      isLoggedIn.orFalse()
@@ -14,6 +15,7 @@ fun Boolean?.orFalse(): Boolean {
 
 /**
  * @return true when the boolean is null, else the value of the boolean is returned
+ *
  * Usage:
  *      val isLoggedIn: Boolean? = null
  *      isLoggedIn.orTrue()
@@ -27,6 +29,7 @@ fun Boolean?.orTrue(): Boolean {
 /**
  * @return false when the boolean is true
  * @return true when boolean is false
+ *
  * Usage:
  *      val isLoggedIn: Boolean = true
  *      isLoggedIn.flip()

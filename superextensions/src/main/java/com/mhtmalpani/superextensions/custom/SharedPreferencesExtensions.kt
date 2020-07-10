@@ -1,5 +1,6 @@
 package com.mhtmalpani.superextensions.custom
 
+import android.annotation.SuppressLint
 import android.content.SharedPreferences
 
 /**
@@ -9,11 +10,28 @@ import android.content.SharedPreferences
  *      sharedPreferences.execute {
  *          putString(KEY, VALUE)
  *      }
+ *
+ *      or
+ *
+ *      sharedPreferences.execute(commit = true) {
+ *          putString(KEY, VALUE)
+ *      }
+ *
  */
-fun SharedPreferences.execute(body: SharedPreferences.Editor.() -> Unit) {
+@SuppressLint("ApplySharedPref")
+fun SharedPreferences.execute(
+    commit: Boolean = false,
+    body: SharedPreferences.Editor.() -> Unit
+): Boolean {
     val editor = edit()
     body(editor)
-    editor.apply()
+
+    return if (commit) {
+        editor.commit()
+    } else {
+        editor.apply()
+        true
+    }
 }
 
 
