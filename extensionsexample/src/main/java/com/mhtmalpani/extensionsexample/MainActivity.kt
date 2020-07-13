@@ -4,10 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mhtmalpani.extensionsexample.model.LibraryModel
 import com.mhtmalpani.superextensions.custom.assetToJsonObject
-import com.mhtmalpani.superextensions.custom.readAssetAsString
+import com.mhtmalpani.superextensions.custom.readAssetAsStringHelper
 import com.mhtmalpani.superextensions.primitive.convertToTitleCase
 import com.mhtmalpani.superextensions.primitive.encodeToUTF8
-import com.mhtmalpani.superextensions.primitive.sha256
 import com.mhtmalpani.superextensions.primitive.sha512
 import com.mhtmalpani.superextensions.view.bindStringArgument
 
@@ -24,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun assetHelper() {
-        val fileAsString = readAssetAsString("sample.json")
+        val fileAsString = readAssetAsStringHelper("sample.json")
         println(fileAsString)
 
         val fileAsObject = assetToJsonObject("sample.json", LibraryModel::class.java)

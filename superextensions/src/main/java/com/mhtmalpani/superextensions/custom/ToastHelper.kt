@@ -27,6 +27,6 @@ fun Context.toast(any: Any, time: Int = Toast.LENGTH_SHORT) = toast(any.toString
 
 fun Context.toast(@StringRes stringRes: Int, time: Int = Toast.LENGTH_SHORT) =
     toast(getString(stringRes), time)
-
+w
 fun Context.toast(message: CharSequence, time: Int = Toast.LENGTH_SHORT) =
     Toast.makeText(this, message, time).show()
