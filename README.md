@@ -30,13 +30,11 @@ dependencies {
 
 
 
-<br/>
+<br/><br/>
 
 
 
 # Docs:
-
----
 
 
 ## SharedPreferences
@@ -74,7 +72,7 @@ val commit = sharedPreferences.executeSynchronous {
 @return commit value of the execution by SharedPreferences
 
 
-<br/>
+<br/><br/>
 
 
 
@@ -105,7 +103,7 @@ private fun onLiveDataChanged(data: String) {
 ```
 
 
-<br/>
+<br/><br/>
 
 
 ## Boolean
@@ -149,7 +147,7 @@ isLoggedIn.flip()
 The above returns false
 
 
-<br/>
+<br/><br/>
 
 
 
@@ -174,7 +172,7 @@ The above extension will work for:
 4. Double
 
 
-<br/>
+<br/><br/>
 
 
 
@@ -190,7 +188,7 @@ data.hash256()
 ```
 
 
-<br/>
+<br/><br/>
 
 
 
@@ -403,7 +401,7 @@ fragmentTransaction {
 ```
 
 
-<br/>
+<br/><br/>
 
 
 
@@ -510,7 +508,7 @@ fragmentTransaction {
 ```
 
 
-<br/>
+<br/><br/>
 
 
 
@@ -562,7 +560,7 @@ your_recycler_view.setOnScrollStateChangeListener { view, newState ->
 ```
 
 
-<br/>
+<br/><br/>
 
 
 
@@ -595,7 +593,7 @@ your_search_view.setOnQueryTextChange { newText ->
 ```
 
 
-<br/>
+<br/><br/>
 
 
 
@@ -611,7 +609,7 @@ username.setTextResource(R.string.name)
 ```
 
 
-<br/>
+<br/><br/>
 
 
 ## View
@@ -659,7 +657,7 @@ submit_button.toggleVisibility()
 ```
 
 
-<br/>
+<br/><br/>
 
 
 
@@ -677,7 +675,7 @@ root_view.iterateChildren { index, child ->
 ```
 
 
-<br/>
+<br/><br/>
 
 
 ## ViewModel
@@ -692,7 +690,7 @@ ViewModelProviders.of(activity, MyViewModelFactory()).get()
 ```
 
 
-<br/>
+<br/><br/>
 
 
 ## EditText
@@ -737,7 +735,7 @@ usernameEditText.beforeTextChanged { charSequence, start, before, end ->
 ```
 
 
-<br/>
+<br/><br/>
 
 
 ## String
@@ -830,7 +828,7 @@ This will print:
 "This is an Example Sentence for String Title Case"
 
 
-<br/>
+<br/><br/>
 
 
 ## Asset Helper
@@ -866,7 +864,7 @@ val fileAsObject: String = readAssetAsString("sample.json")
 ```
 
 
-<br/>
+<br/><br/>
 
 
 ## Toast
@@ -889,7 +887,7 @@ toast("Success", Toast.LENGTH_LONG)
 ```
 
 
-<br/>
+<br/><br/>
 
 
 ## Vibrate
