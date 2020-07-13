@@ -33,7 +33,7 @@ fun EditText.afterTextChanged(afterTextChanged: (data: String) -> Unit = {}) {
  *
  * Usage:
  *      usernameEditText.onTextChanged { charSequence, start, before, end ->
- *          //You custom logic to do after text changed
+ *          //You custom logic to do on text changed
  *      }
  */
 fun EditText.onTextChanged(onTextChanged: (charSequence: CharSequence, start: Int, before: Int, after: Int) -> Unit) {
@@ -57,7 +57,7 @@ fun EditText.onTextChanged(onTextChanged: (charSequence: CharSequence, start: In
  *
  * Usage:
  *      usernameEditText.beforeTextChanged { charSequence, start, before, end ->
- *          //You custom logic to do after text changed
+ *          //You custom logic to do before text changed
  *      }
  */
 fun EditText.beforeTextChanged(beforeTextChanged: (charSequence: CharSequence, start: Int, before: Int, after: Int) -> Unit) {

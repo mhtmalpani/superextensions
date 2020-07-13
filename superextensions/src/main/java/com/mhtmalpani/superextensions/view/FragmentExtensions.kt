@@ -1,5 +1,6 @@
 package com.mhtmalpani.superextensions.view
 
+import android.os.Bundle
 import android.os.Parcelable
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -35,6 +36,36 @@ inline fun <reified T : Fragment> instanceOf(vararg params: Pair<String, Any?>):
         arguments = bundleOf(*params)
     }
 
+
+/**
+ * Create a new instance of a Fragment smoothly.
+ * This should be generally used as a new instance creation from within the fragment.
+ *
+ * Prefer to use a companion object and invoke this:
+ *
+ * Usage:
+ *      companion object {
+ *          fun getIntent(): MyFragment = instanceOf<MyFragment>()
+ *      }
+ *
+ * We can add custom data as arguments as a Pair.
+ * Usage:
+ *      companion object {
+ *          private const val USERNAME = "username"
+ *          private const val AGE = "age"
+ *
+ *          fun getIntent(username: String, age: Int): MyFragment = instanceOf<MyFragment>(
+ *              Bundle().also {
+ *                  it.putString(USERNAME, username)
+ *                  it.putInt(AGE, age)
+ *              }
+ *          )
+ *      }
+ */
+inline fun <reified T : Fragment> instanceOf(bundle: Bundle?): T =
+    T::class.java.newInstance().apply {
+        arguments = bundle
+    }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //                                      Bind Arguments
@@ -98,4 +129,20 @@ fun FragmentManager.transaction(body: FragmentTransaction.() -> Unit) {
     beginTransaction().also {
         body(it)
     }.commit()
+}
+
+/**
+ * Creates a fragment transaction smoothly
+ *
+ * Usage:
+ *      fragmentTransaction {
+ *          replace(R.id.fragment_container, YourFragment(), YourFragment.TAG)
+ *      }
+ */
+fun Fragment.fragmentTransaction(body: FragmentTransaction.() -> Unit) {
+    fragmentManager?.run {
+        beginTransaction().also {
+            body(it)
+        }.commit()
+    }
 }
