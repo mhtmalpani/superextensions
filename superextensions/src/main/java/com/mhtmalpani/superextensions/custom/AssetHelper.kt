@@ -20,7 +20,7 @@ fun <T> Activity.assetToJsonObject(
     filePath: String,
     clazz: Class<T>
 ): T {
-    val json = readAssetAsString(filePath)
+    val json = readAssetAsStringHelper(filePath)
     return Gson().fromJson(json, clazz)
 }
 
@@ -38,39 +38,70 @@ fun <T> Fragment.assetToJsonObject(
     filePath: String,
     clazz: Class<T>
 ): T {
-    val json = readAssetAsString(filePath)
+    val json = readAssetAsStringHelper(filePath)
     return Gson().fromJson(json, clazz)
 }
 
 
 /**
- * Converts a file to a String
+ * Converts a file to a Json object of given type
  *
  * @param filePath the path of the file under the assets directory
+ * @param clazz the Model that it needs to be converted to
  *
  * Usage:
- *      val fileAsObject = readAssetAsString("sample.json")
+ *      val fileAsObject = assetToJsonObject("sample.json", LibraryModel::class.java)
  */
-fun Activity.readAssetAsString(filePath: String): String? {
-    return readAssetAsString(this, filePath)
+fun <T> Context.assetToJsonObject(
+    filePath: String,
+    clazz: Class<T>
+): T {
+    val json = readAssetAsStringHelper(this, filePath)
+    return Gson().fromJson(json, clazz)
 }
 
 
 /**
- * Converts a file to a String
+ * Converts an asset file to a String
  *
  * @param filePath the path of the file under the assets directory
  *
  * Usage:
  *      val fileAsObject = readAssetAsString("sample.json")
  */
-fun Fragment.readAssetAsString(filePath: String): String? {
-    return readAssetAsString(requireContext(), filePath)
+fun Activity.readAssetAsStringHelper(filePath: String): String? {
+    return readAssetAsStringHelper(this, filePath)
+}
+
+
+/**
+ * Converts an asset file to a String
+ *
+ * @param filePath the path of the file under the assets directory
+ *
+ * Usage:
+ *      val fileAsObject = readAssetAsString("sample.json")
+ */
+fun Fragment.readAssetAsStringHelper(filePath: String): String? {
+    return readAssetAsStringHelper(requireContext(), filePath)
+}
+
+
+/**
+ * Converts an asset file to a String
+ *
+ * @param filePath the path of the file under the assets directory
+ *
+ * Usage:
+ *      val fileAsObject = readAssetAsString("sample.json")
+ */
+fun Context.readAssetAsString(filePath: String): String? {
+    return readAssetAsStringHelper(this, filePath)
 }
 
 
 @Throws(Exception::class)
-private fun readAssetAsString(context: Context, filePath: String): String? {
+private fun readAssetAsStringHelper(context: Context, filePath: String): String? {
 
     val inputStream = context.applicationContext.assets.open(filePath)
 

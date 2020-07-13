@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment
  * Binds a view with @param id to variable
  * This can be used within Activity Scope
  *
+ * @param id the XML id that needs to be bound
+ *
  * Usage:
  *      private val profileImage by bindView<ImageView>(R.id.profile_image)
  *      or
@@ -32,6 +34,8 @@ inline fun <reified T : View> Activity.bindView(@IdRes id: Int): Lazy<T> =
 /**
  * Binds a view with @param id to variable
  * This can be used within Fragment Scope
+ *
+ * @param id the XML id that needs to be bound
  *
  * Usage:
  *      private val profileImage by bindView<ImageView>(R.id.profile_image)
@@ -48,6 +52,11 @@ inline fun <reified T : View> Fragment.bindView(@IdRes id: Int): Lazy<T> = lazy 
 /**
  * Binds a view with @param id to variable
  * This can be used within a View Scope
+ *
+ * @param id the XML id that needs to be bound
+ *
+ * Usage:
+ *      root_view.bindView<TextView>(R.id.username)
  */
 inline fun <reified T : View> View.bindView(@IdRes id: Int): Lazy<T> = lazy { findViewById<T>(id) }
 
@@ -78,11 +87,26 @@ fun View.inflate(
     LayoutInflater.from(context).inflate(res, parent, attachToParent)
 
 
-fun View.toggleVisibility(isShown: Boolean) {
+/**
+ * Toggles the visibility of a view
+ * Change from Visible to Invisible and vice versa
+ *
+ * Usage:
+ *      submit_button.toggleVisibility()
+ */
+fun View.toggleVisibility() {
     visibility = if (visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
 }
 
 
+/**
+ * Iterate through each child of a ViewGroup and runs a lambda on them
+ *
+ * Usage:
+ *      root_view.iterateChildren { index, child ->
+ *          //Your custom logic
+ *      }
+ */
 fun ViewGroup.iterateChildren(body: (index: Int, child: View) -> Unit) {
     for (index in 0 until childCount) {
         body(index, getChildAt(index))
