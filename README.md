@@ -26,11 +26,21 @@ dependencies {
 ```
 
 
-Docs:
+---
+
+
+
+<br/>
+
+
+
+# Docs:
+
+---
+
 
 ## SharedPreferences
 
----
 
 `.execute {}`
 
@@ -64,6 +74,10 @@ val commit = sharedPreferences.executeSynchronous {
 @return commit value of the execution by SharedPreferences
 
 
+<br/>
+
+
+
 ## Lifecycle
 
 `observe()`
@@ -91,6 +105,7 @@ private fun onLiveDataChanged(data: String) {
 ```
 
 
+<br/>
 
 
 ## Boolean
@@ -134,6 +149,10 @@ isLoggedIn.flip()
 The above returns false
 
 
+<br/>
+
+
+
 ## Number
 
 `.orZero()`
@@ -154,6 +173,11 @@ The above extension will work for:
 3. Long
 4. Double
 
+
+<br/>
+
+
+
 ## String
 
 `String.hash256()`
@@ -164,6 +188,11 @@ Usage:
 ```kotlin
 data.hash256()
 ```
+
+
+<br/>
+
+
 
 ## Activity
 
@@ -374,6 +403,9 @@ fragmentTransaction {
 ```
 
 
+<br/>
+
+
 
 ## Fragment
 
@@ -478,6 +510,10 @@ fragmentTransaction {
 ```
 
 
+<br/>
+
+
+
 ##RecyclerView
 
 `setScrollListener`
@@ -526,6 +562,10 @@ your_recycler_view.setOnScrollStateChangeListener { view, newState ->
 ```
 
 
+<br/>
+
+
+
 ## SearchView
 
 `setOnQueryTextSubmit`
@@ -555,6 +595,10 @@ your_search_view.setOnQueryTextChange { newText ->
 ```
 
 
+<br/>
+
+
+
 ## TextView
 
 `setTextResource`
@@ -567,6 +611,7 @@ username.setTextResource(R.string.name)
 ```
 
 
+<br/>
 
 
 ## View
@@ -614,6 +659,10 @@ submit_button.toggleVisibility()
 ```
 
 
+<br/>
+
+
+
 ## ViewGroup
 
 `iterateChildren`
@@ -628,6 +677,9 @@ root_view.iterateChildren { index, child ->
 ```
 
 
+<br/>
+
+
 ## ViewModel
 
 `get`
@@ -639,6 +691,8 @@ Usage:
 ViewModelProviders.of(activity, MyViewModelFactory()).get()
 ```
 
+
+<br/>
 
 
 ## EditText
@@ -682,6 +736,8 @@ usernameEditText.beforeTextChanged { charSequence, start, before, end ->
 }
 ```
 
+
+<br/>
 
 
 ## String
@@ -774,6 +830,8 @@ This will print:
 "This is an Example Sentence for String Title Case"
 
 
+<br/>
+
 
 ## Asset Helper
 
@@ -803,9 +861,12 @@ Converts an asset file to a String
 
 @param filePath the path of the file under the assets directory
 
-``kotlin
+```kotlin
 val fileAsObject: String = readAssetAsString("sample.json")
 ```
+
+
+<br/>
 
 
 ## Toast
@@ -826,6 +887,9 @@ toast(R.string.upload_success)
 ```kotlin
 toast("Success", Toast.LENGTH_LONG)
 ```
+
+
+<br/>
 
 
 ## Vibrate
