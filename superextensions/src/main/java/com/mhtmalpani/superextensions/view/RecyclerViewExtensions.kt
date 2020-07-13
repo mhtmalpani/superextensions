@@ -10,6 +10,26 @@ import androidx.recyclerview.widget.RecyclerView
  *          //Do some operation on scroll
  *      }
  */
+fun RecyclerView.setScrollListener(onScrolled: () -> Unit) {
+
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            onScrolled.invoke()
+        }
+    })
+}
+
+
+/**
+ * Sets scroll listener to a recycler view
+ *
+ * Usage:
+ *      your_recycler_view.setScrollListener { view ->
+ *          //Do some operation on scroll
+ *      }
+ */
 fun RecyclerView.setScrollListener(onScrolled: (recyclerView: RecyclerView) -> Unit) {
 
     addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -26,17 +46,17 @@ fun RecyclerView.setScrollListener(onScrolled: (recyclerView: RecyclerView) -> U
  * Sets scroll listener to a recycler view
  *
  * Usage:
- *      your_recycler_view.setScrollListener { dx, dy ->
+ *      your_recycler_view.setScrollListener { view, dx, dy ->
  *          //Do some operation on scroll
  *      }
  */
-fun RecyclerView.setScrollListeners(onScrolled: (dx: Int, dy: Int) -> Unit) {
+fun RecyclerView.setScrollListener(onScrolled: (recyclerView: RecyclerView, dx: Int, dy: Int) -> Unit) {
 
     addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
-            onScrolled.invoke(dx, dy)
+            onScrolled.invoke(recyclerView, dx, dy)
         }
     })
 }
@@ -47,6 +67,26 @@ fun RecyclerView.setScrollListeners(onScrolled: (dx: Int, dy: Int) -> Unit) {
  *
  * Usage:
  *      your_recycler_view.setOnScrollStateChangeListener {
+ *          //Do some operation on scroll state change
+ *      }
+ */
+fun RecyclerView.setOnScrollStateChangeListener(onScrollStateChanged: () -> Unit) {
+
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            onScrollStateChanged.invoke()
+        }
+    })
+}
+
+
+/**
+ * Sets scroll state change listener to a recycler view
+ *
+ * Usage:
+ *      your_recycler_view.setOnScrollStateChangeListener { view ->
  *          //Do some operation on scroll state change
  *      }
  */
